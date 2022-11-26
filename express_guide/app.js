@@ -11,7 +11,12 @@ const shopRouters = require('./routes/shop')
 // extended: false：表示使用系统模块querystring来处理，也是官方推荐的
 // extended: true：表示使用第三方模块qs来处理
 app.use(bodyParser.urlencoded({ extended: false }))
-/* 
+
+// 这里正确的设置,可以保证CSS的路径
+// express.static()可以传入静态服务的文件夹的路径
+app.use(express.static(path.join(__dirname, 'public'))) 
+
+/*
   middleware 中间件
   允许将代码拆分, 体现出the pluggable nature of express(可插拔特性),
   可以在其中轻松添加其他第三方包
