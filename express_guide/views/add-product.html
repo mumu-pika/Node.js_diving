@@ -5,19 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add product</title>
-    <style>
-      .product-form {
-        
-      }
-    </style>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/product.css">
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header___item-list">
+          <li class="main-header__item">
             <a href="/">Shop</a>
-            <a href="/admin/add-product">Add products</a>
+          </li>
+          <li class="main-header__item">
+            <a class="active" href="/admin/add-product">Add products</a>
           </li>
         </ul>
       </nav>
@@ -26,9 +25,9 @@
       <form class="product-form" action="/admin/add-product" method="POST">
         <div class="form-control">
           <label for="title">Title</label>
-          <input class="" type="text" name="title" />
+          <input type="text" name="title" />
         </div>
-        <button type="submit">Add Products</button>
+        <button class="form-control__submit" type="submit">Add Products</button>
       </form>
     </main>
   </body>

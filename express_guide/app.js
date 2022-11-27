@@ -14,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // 这里正确的设置,可以保证CSS的路径
 // express.static()可以传入静态服务的文件夹的路径
-app.use(express.static(path.join(__dirname, 'public'))) 
+// 此外, 可以注册多个静态文件, 然后请求会被汇集到所有这注册的文件中
+app.use(express.static(path.join(__dirname, 'public')))
 
 /*
   middleware 中间件
