@@ -8,6 +8,10 @@ const app = express()
 const adminRoutes = require('./routes/admin')
 const shopRouters = require('./routes/shop')
 
+// app.set(name, value) 全局设置值 对应的可以用app.get()来调用
+app.set('view engine', 'pug')
+app.set('views', 'views') // express中默认会设置views为动态编译的模板
+
 // extended: false：表示使用系统模块querystring来处理，也是官方推荐的
 // extended: true：表示使用第三方模块qs来处理
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -45,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // })
 
 app.use(shopRouters)
-app.use('/admin', adminRoutes)
+app.use('/admin', adminRoutes.router)
 
 // Error page
 app.use((req, res, next) => {

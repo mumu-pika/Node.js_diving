@@ -3,6 +3,8 @@ const path = require('path')
 const express = require('express')
 
 const router = express.Router()
+const adminRoutes = require('./admin')
+
 
 router.get('/', (req, res, next) => {
   // 传送File
@@ -14,7 +16,14 @@ router.get('/', (req, res, next) => {
       window是反斜杠, linux是正斜杠
   */
 
-  res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'))
+  // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'))
+
+  const products = adminRoutes.products
+  // 使用模板引擎, 在第二个参数中传入动态改变的属性值
+  res.render('shop', {
+    prods: products,
+    docTitle: 'My shop'
+  })
 })
 
 module.exports = router
