@@ -1,35 +1,22 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{docTitle}
-    link(rel="stylesheet", href="/css/main.css")
-    link(rel="stylesheet", href="/css/product.css")
+extends layouts/main-layout.pug
 
-  body
-    header.main-header
-      nav.main-header__nav
-        ul.main-header___item-list
-          li.main-header__item
-            a(href="/") Shop
-          li.main-header__item
-            a(href="/admin/add-product") Add products
+block styles
+  link(rel="stylesheet", href="/css/product.css")
 
-    main
-      if prods.length > 0
-        div.grid
-          each product in prods
-            article.card Product-items
-              header.card__header
-                h1.product__title #{product.title}
-              div.card__image
-                img(src="https://raw.githubusercontent.com/mumu-pika/mumu-pika/main/pikachu.gif", alt="pika")
-              div.card__content
-                h2.product__price $9.9
-                p.product__description it is a description
-              div.card__actions
-                button.btn Add to Cart
-      else
-        h1 No products
+block content
+  main
+    if prods.length > 0
+      div.grid
+        each product in prods
+          article.card Product-items
+            header.card__header
+              h1.product__title #{product.title}
+            div.card__image
+              img(src="https://raw.githubusercontent.com/mumu-pika/mumu-pika/main/pikachu.gif", alt="pika")
+            div.card__content
+              h2.product__price $9.9
+              p.product__description it is a description
+            div.card__actions
+              button.btn Add to Cart
+    else
+      h1 No products

@@ -22,7 +22,8 @@ router.get('/', (req, res, next) => {
   // 使用模板引擎, 在第二个参数中传入动态改变的属性值
   res.render('shop', {
     prods: products,
-    docTitle: 'My shop'
+    docTitle: 'My shop',
+    path: '/'
   })
 })
 

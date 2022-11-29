@@ -29,7 +29,8 @@ body {
 }
 
 .main-header__item a:hover,
-.main-header__item a:active {
+.main-header__item a:active,
+.main-header__item a.active{
   color: #e3d802;
   cursor: pointer;
 }
