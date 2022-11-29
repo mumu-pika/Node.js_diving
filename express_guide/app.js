@@ -3,13 +3,26 @@ const path = require('path')
 const express = require('express')
 // const http = require('http')
 const bodyParser = require('body-parser')
+const { engine } = require('express-handlebars')
 
 const app = express()
 const adminRoutes = require('./routes/admin')
 const shopRouters = require('./routes/shop')
 
+// app.engine()可以用来注册一个新的模板引擎, 还需要给引擎起一个名字
+app.engine(
+  'handlebars',
+  engine({
+    layoutsDir: 'views/layouts',
+    defaultLayout: 'main-layout',
+    extname: 'hbs',
+  })
+) // register a Handlebars view engine
+
 // app.set(name, value) 全局设置值 对应的可以用app.get()来调用
-app.set('view engine', 'pug')
+// 需要注意的是, pug已经是内置引擎了, 所以可以直接用app.set()
+// app.set('view engine', 'pug')
+app.set('view engine', 'handlebars')
 app.set('views', 'views') // express中默认会设置views为动态编译的模板
 
 // extended: false：表示使用系统模块querystring来处理，也是官方推荐的

@@ -23,7 +23,8 @@ router.get('/', (req, res, next) => {
   res.render('shop', {
     prods: products,
     docTitle: 'My shop',
-    path: '/'
+    path: '/',
+    hasProducts: products.length > 0
   })
 })
 
