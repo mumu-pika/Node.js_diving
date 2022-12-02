@@ -21,6 +21,7 @@ router.get('/', (req, res, next) => {
   const products = adminRoutes.products
   // 使用模板引擎, 在第二个参数中传入动态改变的属性值
   res.render('shop', {
+    pageTitle: 'shop page',
     prods: products,
     docTitle: 'My shop',
     path: '/',

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop Page</title>
+    <title><%= pageTitle %></title>
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/product.css">
   </head>
@@ -23,21 +23,20 @@
     </header>
     <main>
       <h1>My Products</h1>
-      <p>List of all products...</p>
-
+      <% if (prods.length > 0) { %>
       <div class="grid">
+        <% for (let product of prods) { %>
         <article class="card product-item">
           <header class="card__header">
             <h1 class="product__title">
-              product title
+              <%= product.title %>
             </h1>
           </header>
           <div class="card__image">
-            image
+            <img src="https://raw.githubusercontent.com/mumu-pika/mumu-pika/main/pikachu.gif", alt="pika" />
           </div>
           <div class="card__content">
             <h2 class="product__price">
-              product price
             </h2>
             <p class="product__description">it is a description</p>
           </div>
@@ -45,7 +44,12 @@
             <button class="btn">Add to Cart</button>
           </div>
         </article>
+        <% } %> 
       </div>
+      <% }  else { %>
+        <h1> No Products Found!</h1>
+      <% } %> 
     </main>
+
   </body>
 </html>
