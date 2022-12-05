@@ -1,7 +1,8 @@
 // 将router文件中的逻辑分离出来
 
-const products = [] // 存储添加产品的数组
-
+// 引入models中的product类
+const Product = require('../models/product')
+// const products = [] // 存储添加产品的数组
 const getAddProduct = (req, res, next) => {
   res.render('add-product', {
     pageTitle: 'Add Product',
@@ -10,7 +11,9 @@ const getAddProduct = (req, res, next) => {
 }
 
 const postAddProduct = (req, res, next) => {
-  products.push({ title: req.body.title })
+  const products = new Product(req.body.title)
+  products.save()
+  // products.push({ title: req.body.title })
   res.redirect('/')
 }
 
@@ -25,14 +28,15 @@ const getProducts = (req, res, next) => {
   */
 
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'))
-
-  // 使用模板引擎, 在第二个参数中传入动态改变的属性值
-  res.render('shop', {
-    pageTitle: 'shop page',
-    prods: products,
-    docTitle: 'My shop',
-    path: '/',
-    hasProducts: products.length > 0,
+  Product.fetchAll((products) => {
+    // 使用模板引擎, 在第二个参数中传入动态改变的属性值
+    res.render('shop', {
+      pageTitle: 'shop page',
+      prods: products,
+      docTitle: 'My shop',
+      path: '/',
+      hasProducts: products.length > 0,
+    })
   })
 }
 module.exports = {
