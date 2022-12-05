@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-const productsController = require('../controllers/products')
+const productsController = require('../controllers/products-file')
 
 /* 
   This router is like a mini express app tied
@@ -20,5 +20,5 @@ router.post('/add-product', productsController.postAddProduct)
 router.get('/products', productsController.getAddProduct)
 
 module.exports = {
-  router, 
+  router,
 }

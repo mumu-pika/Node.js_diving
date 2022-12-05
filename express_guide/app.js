@@ -3,11 +3,20 @@ const path = require('path')
 const express = require('express')
 // const http = require('http')
 const bodyParser = require('body-parser')
-const { engine } = require('express-handlebars')
+// const { engine } = require('express-handlebars')
 
+const db = require('./util/database')
 const app = express()
 const adminRoutes = require('./routes/admin')
 const shopRouters = require('./routes/shop')
+
+db.execute('SELECT * FROM products')
+  .then((result) => {
+    console.log("Success! get data from mysql! ")
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 // app.engine()可以用来注册一个新的模板引擎, 还需要给引擎起一个名字
 // app.engine(
