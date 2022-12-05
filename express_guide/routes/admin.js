@@ -16,6 +16,9 @@ router.get('/add-product', productsController.getAddProduct)
 // admin/add-product => POST
 router.post('/add-product', productsController.postAddProduct)
 
+// 这里传递的是对productsController.getAddProduct函数引用
+router.get('/products', productsController.getAddProduct)
+
 module.exports = {
-  router,
+  router, 
 }

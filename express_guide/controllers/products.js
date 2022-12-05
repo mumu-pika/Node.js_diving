@@ -4,14 +4,18 @@
 const Product = require('../models/product')
 // const products = [] // 存储添加产品的数组
 const getAddProduct = (req, res, next) => {
-  res.render('add-product', {
+  res.render('admin/add-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
   })
 }
 
 const postAddProduct = (req, res, next) => {
-  const products = new Product(req.body.title)
+  const title = req.body.title
+  const imageUrl = req.body.imageUrl
+  const description = req.body.description
+  const price = req.body.price
+  const products = new Product(title, imageUrl, description, price)
   products.save()
   // products.push({ title: req.body.title })
   res.redirect('/')
@@ -30,7 +34,7 @@ const getProducts = (req, res, next) => {
   // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'))
   Product.fetchAll((products) => {
     // 使用模板引擎, 在第二个参数中传入动态改变的属性值
-    res.render('shop', {
+    res.render('shop/product-list', {
       pageTitle: 'shop page',
       prods: products,
       docTitle: 'My shop',
